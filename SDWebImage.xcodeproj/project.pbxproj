@@ -22,6 +22,10 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		24624F041688BC3700B7718D /* UISegmentedControl+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 24624F021688BC3700B7718D /* UISegmentedControl+WebCache.m */; };
+		24624F051688BC3700B7718D /* UISegmentedControl+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 24624F021688BC3700B7718D /* UISegmentedControl+WebCache.m */; };
+		24624F061688BC3700B7718D /* UISegmentedControl+WebCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 24624F031688BC3700B7718D /* UISegmentedControl+WebCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		24624F071688BC3700B7718D /* UISegmentedControl+WebCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 24624F031688BC3700B7718D /* UISegmentedControl+WebCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		530E49E816464C25002868E7 /* SDWebImageOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 530E49E71646388E002868E7 /* SDWebImageOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		530E49E916464C26002868E7 /* SDWebImageOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 530E49E71646388E002868E7 /* SDWebImageOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		530E49EA16464C7C002868E7 /* SDWebImageDownloaderOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 530E49E316460AE2002868E7 /* SDWebImageDownloaderOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -80,6 +84,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		24624F021688BC3700B7718D /* UISegmentedControl+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISegmentedControl+WebCache.m"; sourceTree = "<group>"; };
+		24624F031688BC3700B7718D /* UISegmentedControl+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISegmentedControl+WebCache.h"; sourceTree = "<group>"; };
 		530E49E316460AE2002868E7 /* SDWebImageDownloaderOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageDownloaderOperation.h; sourceTree = "<group>"; };
 		530E49E416460AE2002868E7 /* SDWebImageDownloaderOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageDownloaderOperation.m; sourceTree = "<group>"; };
 		530E49E71646388E002868E7 /* SDWebImageOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDWebImageOperation.h; sourceTree = "<group>"; };
@@ -178,6 +184,8 @@
 		53922DA9148C562D0056699D /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				24624F021688BC3700B7718D /* UISegmentedControl+WebCache.m */,
+				24624F031688BC3700B7718D /* UISegmentedControl+WebCache.h */,
 				535699B415113E7300A4C397 /* MKAnnotationView+WebCache.h */,
 				535699B515113E7300A4C397 /* MKAnnotationView+WebCache.m */,
 				53922D93148C56230056699D /* UIButton+WebCache.h */,
@@ -237,6 +245,7 @@
 				531041DA157EAFA400BBABC3 /* UIButton+WebCache.h in Headers */,
 				531041DB157EAFA400BBABC3 /* UIImageView+WebCache.h in Headers */,
 				531041DC157EAFA400BBABC3 /* MKAnnotationView+WebCache.h in Headers */,
+				24624F071688BC3700B7718D /* UISegmentedControl+WebCache.h in Headers */,
 				530E49E916464C26002868E7 /* SDWebImageOperation.h in Headers */,
 				530E49EB16464C7F002868E7 /* SDWebImageDownloaderOperation.h in Headers */,
 			);
@@ -253,6 +262,7 @@
 				5376131C155AD0D5005750A4 /* SDWebImageManager.h in Headers */,
 				5376131E155AD0D5005750A4 /* SDWebImagePrefetcher.h in Headers */,
 				5376131F155AD0D5005750A4 /* UIButton+WebCache.h in Headers */,
+				24624F061688BC3700B7718D /* UISegmentedControl+WebCache.h in Headers */,
 				53761320155AD0D5005750A4 /* UIImageView+WebCache.h in Headers */,
 				530E49E816464C25002868E7 /* SDWebImageOperation.h in Headers */,
 				530E49EA16464C7C002868E7 /* SDWebImageDownloaderOperation.h in Headers */,
@@ -352,7 +362,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\nset +u\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\n    exit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\nSF_TARGET_NAME=\"SDWebImage\"\nSF_EXECUTABLE_PATH=\"lib${SF_TARGET_NAME}.a\"\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\n\n# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\n    SF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\n    echo \"Could not find platform name from SDK_NAME: $SDK_NAME\"\n    exit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\n    SF_SDK_VERSION=${BASH_REMATCH[1]}\nelse\n    echo \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\n    exit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\n    SF_OTHER_PLATFORM=iphonesimulator\nelse\n    SF_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SF_SDK_PLATFORM$ ]]\nthen\n    SF_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}\"\nelse\n    echo \"Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR\"\n    exit 1\nfi\n\n# Build the other platform.\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${SF_OTHER_PLATFORM}${SF_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\" $ACTION\n\n# Smash the two static libraries into one fat binary and store it in the .framework\nlipo -create \"${BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" -output \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n\n# Copy the binary to the other architecture folder to have a complete framework in both.\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n";
+			shellScript = "set -e\nset +u\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\n    exit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\nSF_TARGET_NAME=\"SDWebImage\"\nSF_EXECUTABLE_PATH=\"lib${SF_TARGET_NAME}.a\"\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\n\n# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\n    SF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\n    echo \"Could not find platform name from SDK_NAME: $SDK_NAME\"\n    exit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\n    SF_SDK_VERSION=${BASH_REMATCH[1]}\nelse\n    echo \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\n    exit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\n    SF_OTHER_PLATFORM=iphonesimulator\nelse\n    SF_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SF_SDK_PLATFORM$ ]]\nthen\n    SF_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}\"\nelse\n    echo \"Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR\"\n    exit 1\nfi\n\necho \"TESTING THE WORKS: ${PROJECT_FILE_PATH}\"\necho \"pwd\"\n\n# Build the other platform.\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${SF_OTHER_PLATFORM}${SF_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\" $ACTION\n\n# Smash the two static libraries into one fat binary and store it in the .framework\nlipo -create \"${BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" -output \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n\n# Copy the binary to the other architecture folder to have a complete framework in both.\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -370,6 +380,7 @@
 				531041CA157EAFA400BBABC3 /* UIImageView+WebCache.m in Sources */,
 				531041CB157EAFA400BBABC3 /* MKAnnotationView+WebCache.m in Sources */,
 				530E49ED16464C84002868E7 /* SDWebImageDownloaderOperation.m in Sources */,
+				24624F051688BC3700B7718D /* UISegmentedControl+WebCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +397,7 @@
 				5376130F155AD0D5005750A4 /* UIImageView+WebCache.m in Sources */,
 				530E49EC16464C84002868E7 /* SDWebImageDownloaderOperation.m in Sources */,
 				53406750167780C40042B59E /* SDWebImageCompat.m in Sources */,
+				24624F041688BC3700B7718D /* UISegmentedControl+WebCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,6 +550,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
 			};
 			name = Debug;
 		};
@@ -545,6 +558,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
 			};
 			name = Release;
 		};
