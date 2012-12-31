@@ -3,7 +3,6 @@
 //  SDWebImage
 //
 //  Created by Chirag Gupta on 12/24/12.
-//  Copyright (c) 2012 Dailymotion. All rights reserved.
 //
 
 #import "SDWebImageCompat.h"
